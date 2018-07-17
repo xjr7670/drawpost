@@ -8,8 +8,10 @@ $(function(){
 function imgShow(outerdiv, innerdiv, bigimg, _this){  
     var src = _this.attr("src");            //获取当前点击的pimg元素中的src属性  
     $(bigimg).attr("src", src);             //设置#bigimg元素的src属性  
-  
-        /*获取当前点击图片的真实大小，并显示弹出层及大图*/  
+    var imgIndex = $(_this).index('img');        // 获取当前点击的图片的索引，用它来取得同索引值的span
+    var spanText = $('.img span.text-primary').eq(imgIndex-1).html().split("<br>")[1];
+    console.log(imgIndex);
+    /*获取当前点击图片的真实大小，并显示弹出层及大图*/  
     $("<img/>").attr("src", src).load(function() {  
         var windowW = $(window).width();//获取当前窗口宽度  
         var windowH = $(window).height();//获取当前窗口高度  
@@ -38,6 +40,7 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
         var h = (windowH - imgHeight) / 2;//计算图片与窗口上边距 
         $(innerdiv).css({top: h, left: w});//设置#innerdiv的top和left属性  
         $(outerdiv).fadeIn("fast");//淡入显示#outerdiv及.pimg  
+        $("#innerdiv span").text(spanText);
     });  
       
     $(outerdiv).click(function(){//再次点击淡出消失弹出层  
