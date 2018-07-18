@@ -6,7 +6,8 @@ $(function(){
 });  
  
 function imgShow(outerdiv, innerdiv, bigimg, _this){  
-    var src = _this.attr("src");            //获取当前点击的pimg元素中的src属性  
+    var src = _this.attr("src");            //获取当前点击的pimg元素中的src属性
+    src = src.split("_")[0] + ".jpg";       // 换成大图
     $(bigimg).attr("src", src);             //设置#bigimg元素的src属性  
     var imgIndex = $(_this).index('img');        // 获取当前点击的图片的索引，用它来取得同索引值的span
     var spanText = $('.img span.text-primary').eq(imgIndex-1).html().split("<br>")[1];
