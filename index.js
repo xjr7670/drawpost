@@ -11,7 +11,7 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
     $(bigimg).attr("src", src);             //设置#bigimg元素的src属性  
     var imgIndex = $(_this).index('img');        // 获取当前点击的图片的索引，用它来取得同索引值的span
     var spanText = $('.img span.text-primary').eq(imgIndex-1).html().split("<br>")[1];
-    console.log(imgIndex);
+
     /*获取当前点击图片的真实大小，并显示弹出层及大图*/  
     $("<img/>").attr("src", src).load(function() {  
         var windowW = $(window).width();//获取当前窗口宽度  
